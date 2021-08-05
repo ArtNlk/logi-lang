@@ -1,11 +1,11 @@
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 
 #include "logilib.h"
 
 int main()
 {
-    std::cout << "Hello world";
-    LogicVar testvar;
-    testvar.SetName("tst");
+    std::string testString = "testvar";
+    bool value = false;
 }

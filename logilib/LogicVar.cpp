@@ -1,7 +1,9 @@
 #include "LogicVar.h"
 
-void LogicVar::SetName(const std::string &newName) {
-    this->name = newName;
+LogicVar::LogicVar(const std::string& _name) {
+    this->name = _name;
+    this->value = false;
+    this->evaluated = false;
 }
 
 std::string LogicVar::GetName() {
@@ -14,4 +16,12 @@ void LogicVar::markEvaluated() {
 
 bool LogicVar::isEvaluated() {
     return this->evaluated;
+}
+
+bool LogicVar::operator==(const LogicVar &other) {
+    return this->name == other.name;
+}
+
+bool LogicVar::operator!=(const LogicVar &other) {
+    return this->name != other.name;
 }

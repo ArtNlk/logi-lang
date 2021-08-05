@@ -13,10 +13,12 @@ private:
     bool evaluated;
 
 public:
-    void SetName(const std::string& newName);
+    explicit LogicVar(const std::string& _name);
     std::string GetName();
     void markEvaluated();
     bool isEvaluated();
+    bool operator ==(const LogicVar& other);
+    bool operator !=(const LogicVar& other);
 };
 
 

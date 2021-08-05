@@ -4,6 +4,6 @@
 #include "Operator.h"
 #include "RequestOp.h"
 #include "TrueOp.h"
-#include "TrueifOp.h"
+#include "ConditionalOp.h"
 
 #endif //LOGILANG_OPERATORS_H
