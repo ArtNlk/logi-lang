@@ -14,7 +14,7 @@ private:
 
 public:
     explicit LogicVar(const std::string& _name);
-    std::string GetName();
+    const std::string& GetName();
     void markEvaluated();
     bool isEvaluated();
     bool operator ==(const LogicVar& other);

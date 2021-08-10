@@ -1,6 +1,6 @@
 #include "RequestOp.h"
 
-std::string RequestOp::operatorString = "conditional";
+std::string RequestOp::operatorRegex = "(request\\(\\s*\\))";
 
 RequestOp::RequestOp(const std::string& _requestedVarName) {
     this->requestedVarName = _requestedVarName;
@@ -27,4 +27,17 @@ bool RequestOp::eval() {
     this->evaluated = true;
 
     return this->value;
+}
+
+std::vector<LogicGraphNode *> RequestOp::getRequiredNodes() {
+    return std::vector<LogicGraphNode *>();
+}
+
+void RequestOp::addRequiredNode(LogicGraphNode *addedGraphNode) {
+    return;
+}
+
+bool RequestOp::foundInCommandString(const std::string& targetString) {
+    auto regex = std::regex(RequestOp::operatorRegex);
+    return std::regex_match(targetString,regex);
 }

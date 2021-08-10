@@ -6,7 +6,7 @@ LogicVar::LogicVar(const std::string& _name) {
     this->evaluated = false;
 }
 
-std::string LogicVar::GetName() {
+const std::string& LogicVar::GetName() {
     return this->name;
 }
 

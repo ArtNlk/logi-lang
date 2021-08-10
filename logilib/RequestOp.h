@@ -3,18 +3,24 @@
 
 #include <iostream>
 #include <limits>
+#include <regex>
 
 #include "Operator.h"
 
 class RequestOp : public Operator {
 public:
-    static std::string operatorString;
+    static std::string operatorRegex;
 private:
     std::string requestedVarName;
 
 public:
     explicit RequestOp(const std::string& requestedVarName);
     bool eval() override;
+    static bool foundInCommandString(const std::string& targetString) override;
+private:
+    std::vector<LogicGraphNode*> getRequiredNodes() override;
+    void addRequiredNode(LogicGraphNode* addedGraphNode) override;
+
 };
 
 

@@ -7,5 +7,6 @@
 int main()
 {
     std::string testString = "testvar";
-    bool value = false;
+    ConditionalOp tstop = ConditionalOp();
+    tstop.
 }

@@ -6,6 +6,12 @@ LogicGraphNode::LogicGraphNode(LogicVar* targetLogicVar) {
         throw std::invalid_argument("Logic graph node: target variable ptr is NULL");
     }
     this->targetVariable = targetLogicVar;
+    this->status = DFS_NOT_VISITED;
+}
+
+LogicGraphNode::LogicGraphNode(const std::string& varName) {
+    this->targetVariable = new LogicVar(varName);
+    this->status = DFS_NOT_VISITED;
 }
 
 void LogicGraphNode::addOperator(Operator* newOp) {
@@ -33,4 +39,8 @@ bool LogicGraphNode::eval() {
 
 bool LogicGraphNode::isEvaluated() {
     return this->targetVariable->isEvaluated();
+}
+
+const std::string &LogicGraphNode::getVarName() {
+    return this->targetVariable->GetName();
 }
