@@ -20,6 +20,7 @@ public:
     explicit LogicGraphNode(const std::string& varName);
     ~LogicGraphNode() = default;
     void addOperator(Operator* newOp);
+
     bool eval();
     bool isEvaluated();
     const std::string& getVarName();

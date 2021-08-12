@@ -9,7 +9,7 @@
 
 class RequestOp : public Operator {
 public:
-    static std::string operatorRegex;
+    static std::string operatorName;
 private:
     std::string requestedVarName;
 

@@ -9,7 +9,7 @@
 class TrueOp : public Operator {
 public:
     TrueOp();
-    static std::string operatorRegex;
+    static std::string operatorName;
 
     bool eval() override;
     static bool foundInCommandString(const std::string& targetString) override;

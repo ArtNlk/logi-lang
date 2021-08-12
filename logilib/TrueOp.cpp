@@ -1,5 +1,5 @@
 #include "TrueOp.h"
-std::string TrueOp::operatorRegex = "(true\\(\\s*\\))";
+std::string TrueOp::operatorName = "true";
 
 TrueOp::TrueOp() {
     this->value = true;
@@ -12,7 +12,7 @@ bool TrueOp::eval() {
 }
 
 bool TrueOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(TrueOp::operatorRegex);
+    auto regex = std::regex(TrueOp::operatorName);
     return std::regex_match(targetString,regex);
 }
 

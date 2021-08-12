@@ -1,7 +1,7 @@
 #include "ConditionalOp.h"
 #include "LogicGraphNode.h"//Prevent circular include
 
-std::string ConditionalOp::operatorRegex = "(conditional\\(((\\s*\\w+\\s*,)*(\\s*\\w+\\s*))\\))";
+std::string ConditionalOp::operatorName = "conditional";
 
 
 ConditionalOp::ConditionalOp() {
@@ -44,7 +44,7 @@ std::vector<LogicGraphNode *> ConditionalOp::getRequiredNodes() {
 }
 
 bool ConditionalOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(ConditionalOp::operatorRegex);
+    auto regex = std::regex(ConditionalOp::operatorName);
     return std::regex_match(targetString,regex);
 }
 

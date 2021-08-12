@@ -1,6 +1,6 @@
 #include "RequestOp.h"
 
-std::string RequestOp::operatorRegex = "(request\\(\\s*\\))";
+std::string RequestOp::operatorName = "request";
 
 RequestOp::RequestOp(const std::string& _requestedVarName) {
     this->requestedVarName = _requestedVarName;
@@ -38,6 +38,6 @@ void RequestOp::addRequiredNode(LogicGraphNode *addedGraphNode) {
 }
 
 bool RequestOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(RequestOp::operatorRegex);
+    auto regex = std::regex(RequestOp::operatorName);
     return std::regex_match(targetString,regex);
 }

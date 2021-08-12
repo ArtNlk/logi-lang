@@ -10,7 +10,7 @@
 
 class ConditionalOp : public Operator {
 public:
-    static std::string operatorRegex;
+    static std::string operatorName;
 private:
     std::vector<LogicGraphNode*> requiredNodes;
 
