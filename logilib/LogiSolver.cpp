@@ -46,6 +46,7 @@ bool LogiSolver::parseLine(const std::string& line) {
 
             case CONDITIONAL_OP:
                 std::vector<std::string> requiredVarNames = ConditionalOp::paramStringToVarNames(match.str(4));
+                std::vector<LogicGraphNode*> requiredNodes = std::vector<LogicGraphNode*>();
 
                 for(int i = 0; i < requiredVarNames.size(); i++)
                 {
@@ -55,7 +56,10 @@ bool LogiSolver::parseLine(const std::string& line) {
                         lastError = CONDITIONAL_VAR_NOT_FOUND;
                         return false;
                     }
+                    requiredNodes.push_back(foundNode);
                 }
+
+                targetNode->addOperator(new ConditionalOp(requiredNodes));
                 break;
         }
     }

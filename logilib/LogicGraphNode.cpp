@@ -1,17 +1,12 @@
 #include "LogicGraphNode.h"
 
-LogicGraphNode::LogicGraphNode(LogicVar* targetLogicVar) {
-    if(targetLogicVar == nullptr)
-    {
-        throw std::invalid_argument("Logic graph node: target variable ptr is NULL");
-    }
-    this->targetVariable = targetLogicVar;
-    this->status = DFS_NOT_VISITED;
-}
-
 LogicGraphNode::LogicGraphNode(const std::string& varName) {
     this->targetVariable = new LogicVar(varName);
     this->status = DFS_NOT_VISITED;
+}
+
+LogicGraphNode::~LogicGraphNode() {
+    delete this->targetVariable;
 }
 
 void LogicGraphNode::addOperator(Operator* newOp) {

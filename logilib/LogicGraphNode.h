@@ -16,9 +16,8 @@ private:
     std::vector<Operator*> appliedOperators;
     DFSStatus status;
 public:
-    explicit LogicGraphNode(LogicVar* targetLogicVar);
     explicit LogicGraphNode(const std::string& varName);
-    ~LogicGraphNode() = default;
+    ~LogicGraphNode();
     void addOperator(Operator* newOp);
 
     bool eval();
