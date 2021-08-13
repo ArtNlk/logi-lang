@@ -87,6 +87,12 @@ void LogiSolver::addVar(const std::string &varName) {
     this->graphNodes.push_back(new LogicGraphNode(varName));
 }
 
+solverError LogiSolver::getLastError() {
+    solverError temp = this->lastError;
+    this->lastError = NO_ERROR;
+    return temp;
+}
+
 std::map<std::string, operatorType> LogiSolver::populateOperatorMap() {
     std::map<std::string, operatorType> newMap = std::map<std::string, operatorType>();
     newMap.insert(std::make_pair(TrueOp::operatorName,TRUE_OP));

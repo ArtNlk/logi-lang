@@ -18,13 +18,15 @@ private:
     static char commentChar;
     static std::map<std::string, operatorType> operatorMap;
     std::vector<LogicGraphNode*> graphNodes;
-public:
     solverError lastError;
+
+public:
     LogiSolver() = default;
     bool parseLine(const std::string& line);
     bool solveFor(std::string targetVarName);
     bool findCycles();
     void addVar(const std::string& varName);
+    solverError getLastError();
 
 private:
     static operatorType opTypeFromCmdString(const std::string& cmdString);
