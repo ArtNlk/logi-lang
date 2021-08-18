@@ -3,6 +3,7 @@
 
 #include <string>
 #include <regex>
+#include <iostream>
 
 #include "Operator.h"
 
@@ -12,7 +13,7 @@ public:
     static std::string operatorName;
 
     bool eval() override;
-    static bool foundInCommandString(const std::string& targetString) override;
+    //static bool foundInCommandString(const std::string& targetString) override;
 private:
     std::vector<LogicGraphNode*> getRequiredNodes() override;
     void addRequiredNode(LogicGraphNode* addedGraphNode) override;

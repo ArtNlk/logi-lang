@@ -10,7 +10,7 @@
 #include "LogicGraphNode.h"
 #include "operators.h"
 
-enum solverError{NO_ERROR,CONDITIONAL_VAR_NOT_FOUND,LINE_SYNTAX_INVALID,LINE_IS_COMMENT};
+enum solverStatus{NO_ERROR,CONDITIONAL_VAR_NOT_FOUND,LINE_SYNTAX_INVALID,LINE_IS_COMMENT,CYCLE_DETECTED, SOLVER_VAR_NOT_FOUND, LINE_IS_EMPTY};
 
 class LogiSolver {
 private:
@@ -18,21 +18,23 @@ private:
     static char commentChar;
     static std::map<std::string, operatorType> operatorMap;
     std::vector<LogicGraphNode*> graphNodes;
-    solverError lastError;
+    solverStatus lastStatus;
+    std::vector<std::string> foundCycle;
 
 public:
     LogiSolver() = default;
+    ~LogiSolver();
     bool parseLine(const std::string& line);
     bool solveFor(std::string targetVarName);
     bool findCycles();
-    void addVar(const std::string& varName);
-    solverError getLastError();
+    LogicGraphNode* addVar(const std::string& varName);
+    solverStatus getLastError();
+    std::vector<std::string> getCycleVarNames();
 
 private:
-    static operatorType opTypeFromCmdString(const std::string& cmdString);
     LogicGraphNode* nodeFromVarName(const std::string& varName);
-    bool processDFSTree();
-    void printNodeCycle(std::stack<LogicGraphNode*> currentNodestack,LogicGraphNode* rootNode);
+    bool processDFSTree(std::stack<LogicGraphNode*> &visitedNodeStack, LogicGraphNode *node);
+    std::vector<std::string> DFSstackToNodeNamelist(std::stack<LogicGraphNode*> cycleStack);
     static std::map<std::string, operatorType> populateOperatorMap();
 };
 

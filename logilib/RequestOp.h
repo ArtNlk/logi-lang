@@ -4,6 +4,7 @@
 #include <iostream>
 #include <limits>
 #include <regex>
+#include <cstdlib>
 
 #include "Operator.h"
 
@@ -16,7 +17,7 @@ private:
 public:
     explicit RequestOp(const std::string& requestedVarName);
     bool eval() override;
-    static bool foundInCommandString(const std::string& targetString) override;
+    //static bool foundInCommandString(const std::string& targetString) override;
 private:
     std::vector<LogicGraphNode*> getRequiredNodes() override;
     void addRequiredNode(LogicGraphNode* addedGraphNode) override;

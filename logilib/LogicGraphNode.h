@@ -18,11 +18,15 @@ private:
 public:
     explicit LogicGraphNode(const std::string& varName);
     ~LogicGraphNode();
-    void addOperator(Operator* newOp);
 
+    void addOperator(Operator* newOp);
     bool eval();
     bool isEvaluated();
     const std::string& getVarName();
+    DFSStatus getDFSStatus();
+    void DFSmarkInStack();
+    void DFSmarkDone();
+    std::vector<LogicGraphNode*> getAdjacentNodes();
 };
 
 

@@ -7,14 +7,15 @@ TrueOp::TrueOp() {
 }
 
 bool TrueOp::eval() {
+    std::cout << "\tApplying TRUE\n";
     this->evaluated = true;
     return true;
 }
 
-bool TrueOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(TrueOp::operatorName);
-    return std::regex_match(targetString,regex);
-}
+//bool TrueOp::foundInCommandString(const std::string& targetString) {
+//    auto regex = std::regex(TrueOp::operatorName);
+//    return std::regex_match(targetString,regex);
+//}
 
 std::vector<LogicGraphNode*> TrueOp::getRequiredNodes() {
     return std::vector<LogicGraphNode *>();

@@ -11,8 +11,10 @@ RequestOp::RequestOp(const std::string& _requestedVarName) {
 bool RequestOp::eval() {
     if(this->evaluated)
     {
+        std::cout << "\tApplying REQUEST, operation cached\n";
         return this->value;
     }
+    std::cout << "\tApplying REQUEST\n";
     do
     {
         std::cout << "Enter " << this->requestedVarName << " value (true/false)\n";
@@ -37,7 +39,7 @@ void RequestOp::addRequiredNode(LogicGraphNode *addedGraphNode) {
     return;
 }
 
-bool RequestOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(RequestOp::operatorName);
-    return std::regex_match(targetString,regex);
-}
+//bool RequestOp::foundInCommandString(const std::string& targetString) {
+//    auto regex = std::regex(RequestOp::operatorName);
+//    return std::regex_match(targetString,regex);
+//}

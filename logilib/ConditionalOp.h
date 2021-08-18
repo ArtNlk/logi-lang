@@ -5,6 +5,8 @@
 #include <regex>
 #include <string>
 #include <sstream>
+#include <iostream>
+#include <algorithm>
 
 #include "Operator.h"
 
@@ -18,7 +20,7 @@ public:
     explicit ConditionalOp(const std::vector<LogicGraphNode*>& _requiredNodes);
     explicit ConditionalOp();
     bool eval() override;
-    static bool foundInCommandString(const std::string& targetString);
+    //static bool foundInCommandString(const std::string& targetString);
     std::vector<LogicGraphNode*> getRequiredNodes() override;
     void addRequiredNode(LogicGraphNode* addedGraphNode) override;
     static std::vector<std::string> paramStringToVarNames(const std::string& paramString);

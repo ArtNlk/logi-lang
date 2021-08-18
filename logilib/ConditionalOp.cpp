@@ -22,8 +22,11 @@ void ConditionalOp::addRequiredNode(LogicGraphNode* requiredNode) {
 bool ConditionalOp::eval() {
     if(this->evaluated)
     {
+        std::cout << "\tApplying CONDITIONAL, operation cached\n";
         return this->value;
     }
+
+    std::cout << "\tApplying CONDITIONAL\n";
 
     this->evaluated = true;
 
@@ -32,6 +35,7 @@ bool ConditionalOp::eval() {
         if(!this->requiredNodes.at(i)->eval())
         {
             this->value = false;
+            return this->value;
         }
     }
     this->value = true;
@@ -43,10 +47,10 @@ std::vector<LogicGraphNode *> ConditionalOp::getRequiredNodes() {
     return this->requiredNodes;
 }
 
-bool ConditionalOp::foundInCommandString(const std::string& targetString) {
-    auto regex = std::regex(ConditionalOp::operatorName);
-    return std::regex_match(targetString,regex);
-}
+//bool ConditionalOp::foundInCommandString(const std::string& targetString) {
+//    auto regex = std::regex(ConditionalOp::operatorName);
+//    return std::regex_match(targetString,regex);
+//}
 
 std::vector<std::string> ConditionalOp::paramStringToVarNames(const std::string &paramString) {
     std::stringstream inputStringStream = std::stringstream(paramString);
@@ -55,6 +59,7 @@ std::vector<std::string> ConditionalOp::paramStringToVarNames(const std::string 
 
     while(std::getline(inputStringStream, segment, ','))
     {
+        segment.erase(remove_if(segment.begin(), segment.end(), isspace), segment.end());
         seglist.push_back(segment);
     }
 
