@@ -1,0 +1,10 @@
+var1 = request()
+alwaysTrue = true()
+var2 = conditional(var1, alwaysTrue)
+var2 = request()
+var4 = conditional(var2,var1)
+var6 = conditional( var1,var2 ,var3 ,var4, var5)
+
+;output variable
+output = request()
+output = conditional(var6, var2)
