@@ -23,7 +23,7 @@ Example:
 This operator requests a value from user when evaluated for first time.
 Example:
 
-`requestedVar = conditional()`
+`requestedVar = request()`
 
 ### conditional(var1, var2,...,varN)
 This operator evaluates to true if all variables given as arguments are true. In other words it computes logical AND between all given variables
